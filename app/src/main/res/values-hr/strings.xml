@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KalkuatorDobrinic</string>
+    <string name="app_title">Pretvarač Snage</string>
+    <string name="calculate_button">Izračunaj</string>
+    <string name="kwToHpLabel">KW u HP</string>
+    <string name="hpToKwLabel">HP u KW</string>
+    <string name="enterKw">Unesite KW</string>
+    <string name="enterHp">Unesite HP</string>
+    <string name="inputPlaceholder">Unesite vrijednost</string>
+    <string name="textColor">Boja teksta</string>
+</resources>

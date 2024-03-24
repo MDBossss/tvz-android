@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">KalkuatorDobrinic</string>
+    <string name="app_title">Power Converter</string>
+    <string name="calculate_button">Calculate</string>
+    <string name="kwToHpLabel">KW to HP</string>
+    <string name="hpToKwLabel">HP to KW</string>
+    <string name="enterKw">Enter KW</string>
+    <string name="enterHp">Enter HP</string>
+    <string name="inputPlaceholder">Enter value</string>
+    <string name="textColor">Text color</string>
+</resources>
