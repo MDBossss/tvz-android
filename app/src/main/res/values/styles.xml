@@ -1,0 +1,17 @@
+<resources>
+    <style name="LightTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorBackgroundLight</item>
+        <item name="colorSecondary">@color/colorTextLight</item>
+        <item name="colorAccent">@color/colorTextDark</item>
+        <item name="android:textColorPrimary">@color/colorTextDark</item>
+        <item name="android:textColorSecondary">@color/colorTextLight</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorBackgroundDark</item>
+        <item name="colorSecondary">@color/colorTextDark</item>
+        <item name="colorAccent">@color/colorTextLight</item>
+        <item name="android:textColorPrimary">@color/colorTextLight</item>
+        <item name="android:textColorSecondary">@color/colorTextDark</item>
+    </style>
+</resources>
