@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ListaDobrinic</string>
+    <string name="app_themeChange">Promijeni temu</string>
+    <string name="menu_share">Podjeli</string>
+    <string name="menu_open_url">Otvori sliku</string>
+    <string name="share_car_title">Zelite li podijeliti ovu sliku?</string>
+    <string name="share_car_message">Jeste li zaista sigurni?</string>
+    <string name="action_share">Podijeli</string>
+    <string name="share_car_success">Slika podjeljena</string>
+    <string name="action_cancel">Ne</string>
+</resources>

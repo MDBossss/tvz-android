@@ -1,17 +1,21 @@
 <resources>
     <style name="LightTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorBackgroundLight</item>
-        <item name="colorSecondary">@color/colorTextLight</item>
-        <item name="colorAccent">@color/colorTextDark</item>
-        <item name="android:textColorPrimary">@color/colorTextDark</item>
-        <item name="android:textColorSecondary">@color/colorTextLight</item>
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryLightDark</item>
+        <item name="colorSecondary">@color/colorPrimaryLightDark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryLight</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryLightDark</item>
+        <item name="android:windowBackground">@color/windowBackgroundLight</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorBackgroundDark</item>
-        <item name="colorSecondary">@color/colorTextDark</item>
-        <item name="colorAccent">@color/colorTextLight</item>
-        <item name="android:textColorPrimary">@color/colorTextLight</item>
-        <item name="android:textColorSecondary">@color/colorTextDark</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkDark</item>
+        <item name="colorSecondary">@color/colorPrimaryDarkDark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDarkDark</item>
+        <item name="android:windowBackground">@color/windowBackgroundDark</item>
     </style>
 </resources>

@@ -25,15 +25,11 @@ class CarAdapter(private val context: Context, private val cars: ArrayList<Car>)
     override fun getItemCount(): Int = cars.size
 
     inner class CarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val carBrand: TextView = itemView.findViewById(R.id.car_brand)
-        private val carModel: TextView = itemView.findViewById(R.id.car_model)
-        private val carColor: TextView = itemView.findViewById(R.id.car_color)
-
+        private val carItem: TextView = itemView.findViewById(R.id.car_item)
 
         fun bindCar(car: Car) {
-            carBrand.text = car.brand
-            carModel.text = car.model
-            carColor.text = car.color
+            val carText = "${car.brand} ${car.model}, ${car.color}"
+            carItem.text = carText
 
             itemView.setOnClickListener {
                 // Implement navigation to a details activity or other action

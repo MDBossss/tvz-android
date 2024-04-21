@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ListaDobrinic</string>
+    <string name="app_themeChange">El tema selectar</string>
+    <string name="menu_share">El share</string>
+    <string name="menu_open_url">El open</string>
+    <string name="share_car_title">El share imagia?</string>
+    <string name="share_car_message">Comprende completado?</string>
+    <string name="action_share">El share</string>
+    <string name="share_car_success">Share done bruh</string>
+    <string name="action_cancel">!Si</string>
+</resources>
