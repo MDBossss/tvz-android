@@ -9,40 +9,41 @@
 
     <ImageView
         android:id="@+id/carImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
+        android:layout_width="125dp"
+        android:layout_height="98dp"
         android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/carBrand"
-        android:layout_width="374dp"
-        android:layout_height="41dp"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
         android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/carImage"
-        app:layout_constraintStart_toStartOf="@+id/carImage"
-        app:layout_constraintTop_toBottomOf="@+id/carImage" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/carImage"
+        app:layout_constraintTop_toTopOf="@+id/carImage" />
 
     <TextView
         android:id="@+id/carModel"
-        android:layout_width="367dp"
-        android:layout_height="31dp"
+        android:layout_width="185dp"
+        android:layout_height="0dp"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/carBrand"
         app:layout_constraintStart_toStartOf="@+id/carBrand"
         app:layout_constraintTop_toBottomOf="@+id/carBrand" />
 
     <TextView
         android:id="@+id/carColor"
-        android:layout_width="219dp"
-        android:layout_height="32dp"
+        android:layout_width="181dp"
+        android:layout_height="22dp"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/carModel"
         app:layout_constraintStart_toStartOf="@+id/carModel"
         app:layout_constraintTop_toBottomOf="@+id/carModel" />

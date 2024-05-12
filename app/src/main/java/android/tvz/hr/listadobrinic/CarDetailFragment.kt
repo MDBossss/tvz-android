@@ -14,16 +14,13 @@ import com.squareup.picasso.Picasso
 
 class CarDetailFragment: Fragment() {
 
-    val ARG_ITEM_ID = "item_id"
-
-    var mItem: Car? = getCars()[1]
+    var mItem: Car? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(arguments?.containsKey(ARG_ITEM_ID) == true) {
-            mItem = requireArguments().getString(ARG_ITEM_ID)
-                ?.let { getCars().getOrNull(it.toInt()) }
+        arguments?.let{
+            mItem = it.getParcelable("CAR_DETAILS")
         }
     }
 
