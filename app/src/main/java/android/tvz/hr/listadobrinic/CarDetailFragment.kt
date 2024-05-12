@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.tvz.hr.listadobrinic.R
+import androidx.fragment.app.ListFragment
 
-class CarDetailFragment: Fragment() {
+class CarDetailFragment: ListFragment() {
 
     val ARG_ITEM_ID = "item_id"
 
