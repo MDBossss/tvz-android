@@ -2,22 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
     android:id="@+id/car_list_container_linear"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
 
-    <androidx.fragment.app.FragmentContainerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_list"
         android:name="android.tvz.hr.listadobrinic.CarListFragment"
-        android:layout_width="10dp"
+        android:layout_width="156dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="#FB3E3E"
-        tools:layout="@android:layout/list_content" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".MainActivity"
+        tools:listitem="@layout/car_item" />
 
     <FrameLayout
         android:id="@+id/car_detail_container"

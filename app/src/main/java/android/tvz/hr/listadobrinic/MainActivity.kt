@@ -13,7 +13,7 @@ import androidx.fragment.app.ListFragment
 import androidx.fragment.app.FragmentManager
 
 
-class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
 
         cars = getCars()
 
-        setupRecyclerView()
 
         binding.themeChange?.setOnClickListener{
             val intent = Intent(Settings.ACTION_DISPLAY_SETTINGS)
@@ -50,19 +49,11 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
         // if there is no details view, then its not 2 sided
         if(findViewById<FrameLayout>(R.id.car_detail_container) != null){
             mTwoPane = true
-        }else{
-            mTwoPane = false
-            var carListFragment = CarListFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.recyclerView, carListFragment)
-                .commit()
         }
 
+        setupRecyclerView()
 
-        override fun onItemSelected(id: String?) {
-            TODO("Not yet implemented")
-        }
+
     }
 
     // registering the battery low receiver
@@ -72,10 +63,10 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
 
     private fun setupRecyclerView(){
         linearLayoutManager = LinearLayoutManager(this)
-        adapter = CarAdapter(this,cars)
+        adapter = CarAdapter(this,this,cars, mTwoPane)
 
-        binding.recyclerView?.layoutManager = linearLayoutManager
-        binding.recyclerView?.adapter = adapter
+        binding.itemList.layoutManager = linearLayoutManager
+        binding.itemList.adapter = adapter
     }
 
     private fun getCars(): ArrayList<Car>{

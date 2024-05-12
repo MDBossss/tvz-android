@@ -12,11 +12,11 @@ import android.widget.ImageView
 import androidx.fragment.app.ListFragment
 import com.squareup.picasso.Picasso
 
-class CarDetailFragment: ListFragment() {
+class CarDetailFragment: Fragment() {
 
     val ARG_ITEM_ID = "item_id"
 
-    var mItem: Car? = null
+    var mItem: Car? = getCars()[1]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

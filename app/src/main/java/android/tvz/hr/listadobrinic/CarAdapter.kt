@@ -2,6 +2,7 @@ package android.tvz.hr.listadobrinic
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CarAdapter(private val context: Context, private val cars: ArrayList<Car>) :
+class CarAdapter(private val parentActivity: MainActivity, private val context: Context, private val cars: ArrayList<Car>, private val twoPane: Boolean) :
     RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.car_item, parent, false)
-        return CarViewHolder(view)
+        return CarViewHolder(view, parentActivity, twoPane)
     }
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
@@ -24,7 +25,7 @@ class CarAdapter(private val context: Context, private val cars: ArrayList<Car>)
 
     override fun getItemCount(): Int = cars.size
 
-    inner class CarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CarViewHolder(itemView: View, private val parent: Context, private val twoPane: Boolean) : RecyclerView.ViewHolder(itemView) {
         private val carItem: TextView = itemView.findViewById(R.id.car_item)
 
         fun bindCar(car: Car) {
@@ -32,10 +33,24 @@ class CarAdapter(private val context: Context, private val cars: ArrayList<Car>)
             carItem.text = carText
 
             itemView.setOnClickListener {
-                // Implement navigation to a details activity or other action
-                val intent = Intent(context, DetailsActivity::class.java)
-                intent.putExtra("CAR_DETAILS", car) // Key for sending car object
-                context.startActivity(intent)
+
+                if(twoPane){
+                    val fragment = CarDetailFragment().apply {
+                        arguments = Bundle().apply{
+                            putParcelable("CAR_DETAILS",car)
+                        }
+                    }
+                    parentActivity.supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.car_detail_container, fragment)
+                        .commit()
+                }else{
+                    // Implement navigation to a details activity or other action
+                    val intent = Intent(context, DetailsActivity::class.java)
+                    intent.putExtra("CAR_DETAILS", car) // Key for sending car object
+                    context.startActivity(intent)
+                }
+
             }
         }
     }
