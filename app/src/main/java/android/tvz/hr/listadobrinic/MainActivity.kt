@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.Settings
 import android.tvz.hr.listadobrinic.databinding.ActivityMainBinding
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.fragment.app.ListFragment
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
     private lateinit var adapter: CarAdapter
     private var cars = ArrayList<Car>()
 
+    var mTwoPane = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,7 +33,7 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
 
         setupRecyclerView()
 
-        binding.themeChange.setOnClickListener{
+        binding.themeChange?.setOnClickListener{
             val intent = Intent(Settings.ACTION_DISPLAY_SETTINGS)
             startActivity(intent)
         }
@@ -40,6 +43,25 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
         }
         else{
             setTheme(R.style.LightTheme)
+        }
+
+        // NEW LANDSCAPE STUFF
+
+        // if there is no details view, then its not 2 sided
+        if(findViewById<FrameLayout>(R.id.car_detail_container) != null){
+            mTwoPane = true
+        }else{
+            mTwoPane = false
+            var carListFragment = CarListFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.recyclerView, carListFragment)
+                .commit()
+        }
+
+
+        override fun onItemSelected(id: String?) {
+            TODO("Not yet implemented")
         }
     }
 
@@ -52,8 +74,8 @@ class MainActivity : AppCompatActivity(), CarListFragment.Callbacks {
         linearLayoutManager = LinearLayoutManager(this)
         adapter = CarAdapter(this,cars)
 
-        binding.recyclerView.layoutManager = linearLayoutManager
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView?.layoutManager = linearLayoutManager
+        binding.recyclerView?.adapter = adapter
     }
 
     private fun getCars(): ArrayList<Car>{

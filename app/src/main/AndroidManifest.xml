@@ -14,8 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/LightTheme"
         tools:targetApi="31">
-        <activity android:name=".CarListFragment" android:exported="false" />
-        <activity android:name=".CarDetailFragment" android:exported="false" />
         <activity
             android:name=".ImageActivity"
             android:exported="false" />

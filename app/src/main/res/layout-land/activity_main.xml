@@ -1,6 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:divider="?android:attr/dividerHorizontal"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    android:id="@+id/car_list_container_linear"
+    tools:context=".MainActivity" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/item_list"
+        android:name="android.tvz.hr.listadobrinic.CarListFragment"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FB3E3E"
+        tools:layout="@android:layout/list_content" />
+
+    <FrameLayout
+        android:id="@+id/car_detail_container"
+        android:layout_width="0dp"
+        android:background="#00BCD4"
+        android:layout_height="match_parent"
+        android:layout_weight="3" />
+
+</LinearLayout>
