@@ -1,61 +1,39 @@
 package android.tvz.hr.listadobrinic
 
-import android.content.Intent
-import android.content.IntentFilter
-import android.content.res.Configuration
 import android.os.Bundle
-import android.provider.Settings
-import android.tvz.hr.listadobrinic.databinding.ActivityMainBinding
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.ListFragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.fragment.app.FragmentManager
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import android.tvz.hr.listadobrinic.R
 
+class CarDetailFragment: Fragment() {
 
-class MainActivity : AppCompatActivity(), ItemListFragment.Callbacks {
+    val ARG_ITEM_ID = "item_id"
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var adapter: CarAdapter
-    private var cars = ArrayList<Car>()
-
-    private var twoPane = false
+    var mItem: Car? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        registerReceivers()
-
-        cars = getCars()
-
-        setupRecyclerView()
-
-        binding.themeChange.setOnClickListener{
-            val intent = Intent(Settings.ACTION_DISPLAY_SETTINGS)
-            startActivity(intent)
-        }
-
-        if(this.resources.configuration.uiMode == Configuration.UI_MODE_NIGHT_YES){
-            setTheme(R.style.DarkTheme)
-        }
-        else{
-            setTheme(R.style.LightTheme)
+        if(arguments?.containsKey(ARG_ITEM_ID) == true) {
+            mItem = requireArguments().getString(ARG_ITEM_ID)
+                ?.let { getCars().getOrNull(it.toInt()) }
         }
     }
 
-    // registering the battery low receiver
-    private fun registerReceivers(){
-        registerReceiver(BatteryLowReceiver(), IntentFilter("android.intent.action.BATTERY_LOW"))
-    }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView: View = inflater.inflate(R.layout.fragment_car_detail, container, false)
+        if (mItem != null) {
+            (rootView.findViewById<View>(R.id.item_detail) as TextView).text = mItem!!.toString()
+        }
 
-    private fun setupRecyclerView(){
-        linearLayoutManager = LinearLayoutManager(this)
-        adapter = CarAdapter(this,cars)
-
-        binding.recyclerView.layoutManager = linearLayoutManager
-        binding.recyclerView.adapter = adapter
+        return rootView
     }
 
     private fun getCars(): ArrayList<Car>{
@@ -83,5 +61,4 @@ class MainActivity : AppCompatActivity(), ItemListFragment.Callbacks {
             Car("20","Volvo", "XC90", "White", "https://i.imgur.com/yZ49CNh.jpg"),
         )
     }
-
 }
