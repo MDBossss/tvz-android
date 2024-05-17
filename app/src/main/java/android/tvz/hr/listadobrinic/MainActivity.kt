@@ -13,7 +13,6 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -37,10 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         registerReceivers()
 
-        db = Room.databaseBuilder(
-            applicationContext,
-            CarDatabase::class.java, "cars"
-        ).allowMainThreadQueries().build()
+        db = CarDatabaseHelper.getInstance(this)
 
         carDao = db.carDao()
 
