@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "554823836322",
+    "project_id": "tvz-android-lab3",
+    "storage_bucket": "tvz-android-lab3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554823836322:android:3e7917ec7909a747cbedfb",
+        "android_client_info": {
+          "package_name": "android.tvz.hr.listadobrinic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyi-uWeQbq51WMKqoc3CNf-gsklYx9kn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

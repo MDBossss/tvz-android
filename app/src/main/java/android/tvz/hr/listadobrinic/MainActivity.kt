@@ -6,11 +6,15 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.Settings
 import android.tvz.hr.listadobrinic.databinding.ActivityMainBinding
+import android.util.Log
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.fragment.app.ListFragment
 import androidx.fragment.app.FragmentManager
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +54,22 @@ class MainActivity : AppCompatActivity() {
         if(findViewById<FrameLayout>(R.id.car_detail_container) != null){
             mTwoPane = true
         }
+
+
+        // Firebase
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if(!task.isSuccessful){
+                Log.w("Main activity", "getInstanceId failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            Log.d("Main activity token:", token)
+            Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
+        })
 
         setupRecyclerView()
 
