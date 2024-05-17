@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/car_list_container_linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:showDividers="middle"
-    android:id="@+id/car_list_container_linear"
     tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/themeChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_themeChange" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_list"
         android:name="android.tvz.hr.listadobrinic.CarListFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="737dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context=".MainActivity"
-        tools:listitem="@layout/car_item"
-        />
-
-    <Button
-        android:id="@+id/themeChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_themeChange" />
+        tools:listitem="@layout/car_item" />
 </LinearLayout>
