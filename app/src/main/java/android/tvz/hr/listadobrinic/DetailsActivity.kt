@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.tvz.hr.listadobrinic.databinding.ActivityDetailsBinding
+import android.tvz.hr.listadobrinic.model.Car
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
