@@ -82,6 +82,8 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    // Coil
+    implementation 'io.coil-kt:coil:1.4.0'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -90,4 +92,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
     // Fresco
     implementation 'com.facebook.fresco:fresco:2.6.0'
+
+
 }

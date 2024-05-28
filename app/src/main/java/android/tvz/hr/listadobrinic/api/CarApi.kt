@@ -13,6 +13,9 @@ interface CarApi {
     @GET("/api/cars")
     fun getCars(): Call<MutableList<Car>>
 
+    @GET("/api/cars/latest")
+    fun getLatestCar(): Call<Car>
+
     @POST("/api/cars")
     fun createCar(@Body car: Car): Call<Car>
 
