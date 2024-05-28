@@ -11,9 +11,10 @@ datasource db {
 }
 
 model Car {
-    id       String @id @default(uuid())
-    brand    String
-    model    String
-    color    String
-    imageUrl String
+    id        String   @id @default(uuid())
+    brand     String
+    model     String
+    color     String
+    imageUrl  String
+    updatedAt DateTime @default(now()) @updatedAt
 }

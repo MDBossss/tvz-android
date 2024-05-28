@@ -15,6 +15,23 @@ class CarController {
     }
   }
 
+  async getLatestCar(req: Request, res: Response) {
+    console.log("[INFO] Called: getLatestCar()");
+    try {
+      const cars = await prisma.car.findMany({
+        orderBy: {
+          updatedAt: "desc",
+        },
+        take: 1,
+      });
+
+      res.status(200).json(cars[0]);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
   async getCarById(req: Request, res: Response) {
     try {
       const { id } = req.params;

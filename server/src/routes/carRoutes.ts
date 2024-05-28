@@ -8,6 +8,7 @@ router.use(express.json());
 
 // Routes
 router.get("/", carController.getAllCars);
+router.get("/latest", carController.getLatestCar);
 router.get("/:id", carController.getCarById);
 router.post("/", carController.createCar);
 router.put("/:id", carController.updateCar);
