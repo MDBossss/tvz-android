@@ -1,5 +1,6 @@
 package android.tvz.hr.listadobrinic
 
+import android.net.Uri
 import android.os.Bundle
 import android.tvz.hr.listadobrinic.databinding.ActivityImageBinding
 import android.tvz.hr.listadobrinic.model.Car
@@ -7,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.squareup.picasso.Picasso
+import com.facebook.drawee.view.SimpleDraweeView
 
 class ImageActivity : AppCompatActivity() {
 
@@ -24,9 +25,13 @@ class ImageActivity : AppCompatActivity() {
             insets
         }
 
+
         val item = intent.getParcelableExtra<Car>("CAR_DETAILS")
         if(item != null){
-            Picasso.get().load(item.imageUrl).into(binding.image)
+//            Picasso.get().load(item.imageUrl).into(binding.image)
+            val uri = Uri.parse(item.imageUrl)
+            val draweeView = binding.image as SimpleDraweeView
+            draweeView.setImageURI(uri)
         }
     }
 }
