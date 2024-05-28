@@ -3,6 +3,7 @@ package android.tvz.hr.listadobrinic
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.tvz.hr.listadobrinic.databinding.ActivityDetailsBinding
@@ -22,6 +23,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
     private var car: Car? = null
+    private lateinit var mediaPlayer: MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -32,6 +34,14 @@ class DetailsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val playButton = binding.playButton
+        val pauseButton = binding.stopButton
+
+        playButton.setOnClickListener { onPlayClick() }
+        pauseButton.setOnClickListener { onPauseClick() }
+
+        mediaPlayer = MediaPlayer.create(getApplication(), R.raw.song)
 
         car = intent.getParcelableExtra<Car>("CAR_DETAILS").also{
             if (it != null) {
@@ -93,6 +103,15 @@ class DetailsActivity : AppCompatActivity() {
             intent.data = Uri.parse(it.imageUrl)
             startActivity(intent)
         }
+    }
+
+    fun onPlayClick() {
+        mediaPlayer = MediaPlayer.create(getApplication(), R.raw.song)
+        mediaPlayer.start()
+    }
+
+    fun onPauseClick() {
+        mediaPlayer.stop()
     }
 
     private fun bindCar(car:Car){
