@@ -81,4 +81,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    // Logiranje
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+    // Fresco
+    implementation 'com.facebook.fresco:fresco:2.6.0'
 }

@@ -5,9 +5,10 @@ import android.content.IntentFilter
 import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.Settings
+import android.tvz.hr.listadobrinic.api.CarApi
+import android.tvz.hr.listadobrinic.api.ServiceGenerator
 import android.tvz.hr.listadobrinic.databinding.ActivityMainBinding
 import android.tvz.hr.listadobrinic.model.Car
-import android.tvz.hr.listadobrinic.model.CarDao
 import android.util.Log
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -15,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,8 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: CarAdapter
     private var cars = ArrayList<Car>()
 
-    lateinit var carDao: CarDao
-    lateinit var db: CarDatabase
+    val BASE_URL = "http://10.0.2.2:3000"
 
     var mTwoPane = false
 
@@ -36,16 +39,25 @@ class MainActivity : AppCompatActivity() {
 
         registerReceivers()
 
-        db = CarDatabaseHelper.getInstance(this)
+        val client: CarApi = ServiceGenerator().createService(CarApi::class.java,BASE_URL)
 
-        carDao = db.carDao()
+        val carsCall: Call<MutableList<Car>> = client.getCars()
 
-//        carDao.insertCar(Car(1,"Mercedes","W124","Green","https://i.pinimg.com/736x/85/5f/38/855f38f134cb18e421c013b7420984a7.jpg"))
-//        carDao.insertCar(Car(2,"Mercedes", "W210", "Silver", "https://i.pinimg.com/736x/9e/5f/37/9e5f37048fe10a4856e68516c4d895f3.jpg"))
-//        carDao.insertCar(Car(3,"Toyota", "Corolla", "Red", "https://i.insider.com/5f5f966f7ed0ee001e25f20e?width=700"))
+        carsCall.enqueue(object : Callback<MutableList<Car>>{
+            override fun onResponse(
+                call: Call<MutableList<Car>>,
+                response: Response<MutableList<Car>>
+            ) {
+                if(response.isSuccessful){
+                    cars = response.body() as ArrayList<Car>
+                    setupRecyclerView()
+                }
+            }
 
-        cars = carDao.getCars() as ArrayList<Car>
-
+            override fun onFailure(call: Call<MutableList<Car>>, t: Throwable) {
+                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+            }
+        })
 
         binding.themeChange?.setOnClickListener{
             val intent = Intent(Settings.ACTION_DISPLAY_SETTINGS)
@@ -82,10 +94,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
         })
 
-        setupRecyclerView()
 
 
     }
+
 
     // registering the battery low receiver
     private fun registerReceivers(){

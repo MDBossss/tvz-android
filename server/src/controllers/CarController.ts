@@ -4,6 +4,7 @@ import { Car } from "@prisma/client";
 
 class CarController {
   async getAllCars(req: Request, res: Response) {
+    console.log("[INFO] Called: getAllCars()");
     try {
       const cars = await prisma.car.findMany();
 
@@ -33,6 +34,8 @@ class CarController {
   }
 
   async createCar(req: Request, res: Response) {
+    console.log("[INFO] Called: createCar()");
+
     try {
       const car: Car = req.body;
 

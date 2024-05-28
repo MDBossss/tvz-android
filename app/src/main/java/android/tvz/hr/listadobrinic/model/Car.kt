@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity
 data class Car (
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: String,
     val brand: String,
     val model: String,
     val color: String,
