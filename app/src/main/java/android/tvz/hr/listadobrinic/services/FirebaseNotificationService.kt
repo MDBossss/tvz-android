@@ -1,11 +1,13 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.services
 
 import android.app.ActivityManager
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.tvz.hr.listadobrinic.model.Car
+import android.tvz.hr.listadobrinic.R
+import android.tvz.hr.listadobrinic.local.CarDatabaseHelper
+import android.tvz.hr.listadobrinic.ui.activity.ImageActivity
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService

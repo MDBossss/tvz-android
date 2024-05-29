@@ -1,7 +1,8 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.ui.activity
 
 import android.net.Uri
 import android.os.Bundle
+import android.tvz.hr.listadobrinic.R
 import android.tvz.hr.listadobrinic.databinding.ActivityImageBinding
 import android.tvz.hr.listadobrinic.model.Car
 import androidx.activity.enableEdgeToEdge

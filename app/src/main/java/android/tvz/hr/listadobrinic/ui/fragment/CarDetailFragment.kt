@@ -1,16 +1,16 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.tvz.hr.listadobrinic.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import android.tvz.hr.listadobrinic.R
 import android.tvz.hr.listadobrinic.model.Car
+import android.tvz.hr.listadobrinic.ui.activity.ImageActivity
 import android.widget.ImageView
-import androidx.fragment.app.ListFragment
 import com.squareup.picasso.Picasso
 
 class CarDetailFragment: Fragment() {
@@ -39,7 +39,7 @@ class CarDetailFragment: Fragment() {
 
             Picasso.get().load(mItem!!.imageUrl).into((rootView.findViewById<View>(R.id.carImage) as ImageView))
 
-            (rootView.findViewById<View>(R.id.carImage) as ImageView).setOnClickListener{v: View? -> v?.let {
+            (rootView.findViewById<View>(R.id.carImage) as ImageView).setOnClickListener{ v: View? -> v?.let {
                 val context = it.context
                 val showImageIntent = Intent(context, ImageActivity::class.java)
                 showImageIntent.putExtra("CAR_DETAILS",mItem)

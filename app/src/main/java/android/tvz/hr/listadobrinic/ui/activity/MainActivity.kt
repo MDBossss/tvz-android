@@ -1,14 +1,17 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.ui.activity
 
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.Settings
+import android.tvz.hr.listadobrinic.reciever.BatteryLowReceiver
+import android.tvz.hr.listadobrinic.R
 import android.tvz.hr.listadobrinic.api.CarApi
-import android.tvz.hr.listadobrinic.api.ServiceGenerator
+import android.tvz.hr.listadobrinic.api.RetrofitHelper
 import android.tvz.hr.listadobrinic.databinding.ActivityMainBinding
 import android.tvz.hr.listadobrinic.model.Car
+import android.tvz.hr.listadobrinic.ui.adapter.CarAdapter
 import android.util.Log
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         registerReceivers()
 
-        val client: CarApi = ServiceGenerator().createService(CarApi::class.java,BASE_URL)
+        val client: CarApi = RetrofitHelper().createService(CarApi::class.java,BASE_URL)
 
         val carsCall: Call<MutableList<Car>> = client.getCars()
 

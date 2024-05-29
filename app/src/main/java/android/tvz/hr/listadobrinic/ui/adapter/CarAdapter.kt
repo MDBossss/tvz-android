@@ -1,8 +1,12 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.ui.adapter
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.tvz.hr.listadobrinic.ui.fragment.CarDetailFragment
+import android.tvz.hr.listadobrinic.ui.activity.DetailsActivity
+import android.tvz.hr.listadobrinic.ui.activity.MainActivity
+import android.tvz.hr.listadobrinic.R
 import android.tvz.hr.listadobrinic.model.Car
 import android.view.LayoutInflater
 import android.view.View

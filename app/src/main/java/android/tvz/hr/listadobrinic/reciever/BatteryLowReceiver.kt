@@ -1,4 +1,4 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.reciever
 
 import android.content.BroadcastReceiver
 import android.content.Context

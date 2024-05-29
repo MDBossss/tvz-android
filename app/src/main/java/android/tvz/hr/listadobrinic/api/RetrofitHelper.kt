@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ServiceGenerator {
+class RetrofitHelper {
 
     public fun <S> createService(serviceClass: Class<S>?, baseUrl: String?): S {
         //HttpLoggingInterceptor služi za Logging - može usporavati aplikaciju!

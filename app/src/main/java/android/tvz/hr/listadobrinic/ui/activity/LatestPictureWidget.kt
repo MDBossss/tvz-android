@@ -1,12 +1,13 @@
-package android.tvz.hr.listadobrinic
+package android.tvz.hr.listadobrinic.ui.activity
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
+import android.tvz.hr.listadobrinic.R
 import android.tvz.hr.listadobrinic.api.CarApi
-import android.tvz.hr.listadobrinic.api.ServiceGenerator
+import android.tvz.hr.listadobrinic.api.RetrofitHelper
 import android.tvz.hr.listadobrinic.model.Car
 import android.util.Log
 import android.widget.RemoteViews
@@ -21,7 +22,6 @@ import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 class LatestPictureWidget : AppWidgetProvider() {
 
@@ -61,7 +61,7 @@ internal suspend fun updateAppWidget(
 ){
     val BASE_URL = "http://10.0.2.2:3000"
 
-    val client: CarApi = ServiceGenerator().createService(CarApi::class.java,BASE_URL)
+    val client: CarApi = RetrofitHelper().createService(CarApi::class.java,BASE_URL)
 
     val carsCall: Call<Car> = client.getLatestCar()
 

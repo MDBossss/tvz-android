@@ -1,5 +1,6 @@
-package android.tvz.hr.listadobrinic.model
+package android.tvz.hr.listadobrinic.local
 
+import android.tvz.hr.listadobrinic.model.Car
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

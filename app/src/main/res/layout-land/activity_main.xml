@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:showDividers="middle"
     android:id="@+id/car_list_container_linear"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,7 +19,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".MainActivity"
+        tools:context=".ui.activity.MainActivity"
         tools:listitem="@layout/car_item" />
 
     <FrameLayout
